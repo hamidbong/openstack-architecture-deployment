@@ -18,8 +18,9 @@ The goal of this project is to build a working Private Cloud. By installing each
 
 ## 🛠️ Technical Stack
 
-* **Operating System:** [Put your OS here, ex: Ubuntu Server 22.04 LTS]
-* **OpenStack Version:** [Put your version here, ex: Zed / Antelope]
+* **Operating System:** Ubuntu Server 22.04 LTS
+* **OpenStack Version:** 2025.1 (Epoxy)
+
 * **Database:** MariaDB (To store configuration and service data)
 * **Message Queue:** RabbitMQ (For communication between OpenStack services)
 * **Hypervisor:** KVM/QEMU (To run the virtual machines)
