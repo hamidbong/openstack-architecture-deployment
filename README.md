@@ -16,9 +16,14 @@ The goal of this project is to build a working Private Cloud. By installing each
 
 ---
 
-## 🛠️ Technical Stack
+## 🛠️ Technical Stack & Topology
 
-* **Operating System:** Ubuntu Server 22.04 LTS
+I deployed a **3-node architecture** to simulate a real-world production environment:
+
+* **1 Controller Node:** Runs Identity (Keystone), Image (Glance), Placement, Management APIs, MariaDB, and RabbitMQ.
+* **2 Compute Nodes (Compute-01 & Compute-02):** Dedicated nodes running Nova-Compute and Hypervisors to host the Virtual Machines.
+
+* **Operating System:** Ubuntu Server 24.04 LTS
 * **OpenStack Version:** 2025.1 (Epoxy)
 
 * **Database:** MariaDB (To store configuration and service data)
