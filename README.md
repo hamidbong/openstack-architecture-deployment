@@ -44,6 +44,14 @@ When you launch a virtual machine, the services communicate in this order:
 
 ---
 
+## 📂 Configuration Files
+
+The custom configuration profiles for each service are documented in the `configs/` directory:
+* [Keystone Configuration](./configs/keystone.conf) - Identity & token setups.
+* [Nova Configuration](./configs/nova-controller.conf) - Compute scheduler and controller settings.
+* [Neutron Configuration](./configs/neutron.conf) - Core ML2 and overlay network bindings.
+*(Note: All sensitive passwords, tokens, and production keys have been sanitized for security.)*
+
 ## 🧠 What I Learned & Troubleshooting
 
 Installing OpenStack "the hard way" is challenging. Here are the main problems I solved:
