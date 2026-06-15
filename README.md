@@ -16,6 +16,18 @@ The goal of this project is to build a working Private Cloud. By installing each
 
 ---
 
+## 📋 Prerequisites & Deployment Standards
+
+This project strictly follows the **Official OpenStack Installation Guide** deployment standards. The infrastructure baseline complies with the official prerequisites for a multi-node architecture:
+
+* **Hardware & Environment:** 
+  * 3 Dedicated Nodes (1 Controller, 2 Compute hosts) with nested virtualization enabled.
+  * Hardware virtualization support (VT-x/AMD-V) verified on all Compute nodes.
+* **Software Baseline:** 
+  * Clean OS installation (Ubuntu Server) with localized package repositories configured.
+  * Official OpenStack repository architecture tools (`python3-openstackclient`) installed directly from upstream.
+---
+
 ## 🛠️ Technical Stack & Topology
 
 I deployed a **3-node architecture** to simulate a real-world production environment:
