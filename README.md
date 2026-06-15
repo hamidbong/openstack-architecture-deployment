@@ -93,7 +93,7 @@ $ openstack hypervisor list
 |   2   |   compute2    |     up     |   enabled   |
 +-------+---------------+------------+-------------+
 ```
-### Active instance
+### Active instance (the instance i have created)
 
 ```bash
 $ openstack server list
