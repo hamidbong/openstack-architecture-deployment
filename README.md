@@ -32,6 +32,31 @@ I deployed a **3-node architecture** to simulate a real-world production environ
 
 ---
 
+## 🌐 Network Architecture & Topology
+
+To achieve a true multi-node deployment, I separated the physical network interfaces into distinct logical networks using Linux bridging and Netplan configurations.
+
+### 1. Physical Infrastructure Networks (Underlay)
+*   **Management Network (`192.168.122.0/24`):** Used for internal node-to-node communication, database synchronization, and AMQP message queues.
+    *   `Controller Node IP:` 192.168.122.96
+    *   `Compute Node 01 IP:` 192.168.122.68
+    *   `Compute Node 02 IP:` 192.168.122.126
+*   **Provider Network (External/Public):** Bypasses IP routing on the host to connect OpenStack instances directly to the external physical network gate.
+
+The Netplan configuration files for all 3 nodes can be reviewed in the [OS-infrastructure configs folder](./configs/OS-infrastructure/).
+
+### 2. Virtual Cloud Networks (Overlay - Neutron)
+Once the underlying cluster network was stable, I provisioned the logical cloud infrastructure via the OpenStack CLI:
+
+*   **External Provider Network:** A flat/VLAN network map linked to the physical interface for internet egress.
+*   **Self-Service Private Network:** An isolated tenant network (`192.168.60.0/24`) using VXLAN encapsulation for tenant isolation.
+*   **Virtual Router:** Connects the Self-Service network to the Provider network, with SNAT enabled for internet access.
+*   **Security Groups:** Configured strict firewall rules to secure instances:
+    *   `Ingress:` Allowed SSH (Port 22) and ICMP (Ping) only from specific administration subnets.
+    *   `Egress:` Allowed all traffic for system updates.
+
+---
+
 ## 🏗️ How the Architecture Works
 
 When you launch a virtual machine, the services communicate in this order:
@@ -53,6 +78,20 @@ The custom configuration profiles for each service are documented in the `config
 *(Note: All sensitive passwords, tokens, and production keys have been sanitized for security.)*
 
 ---
+
+## 📊 Infrastructure Verification
+
+To confirm the cluster health and resource allocation, here are the outputs from the running deployment:
+
+### Active Compute Hypervisors
+```bash
+$ openstack hypervisor list
++-------+---------------+------------+-------------+
+|   ID  |     Host      |    State   |   Status    |
++-------+---------------+------------+-------------+
+|   1   |   compute1    |     up     |   enabled   |
+|   2   |   compute2    |     up     |   enabled   |
++-------+---------------+------------+-------------+
 
 ## 🧠 What I Learned & Troubleshooting
 
