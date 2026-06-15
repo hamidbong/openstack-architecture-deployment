@@ -5,7 +5,7 @@
 openstack image create "ubuntu-24.04-cloud" --file ubuntu-24.04-server-cloudimg-amd64.img --disk-format qcow2 --container-format bare --public
 
 # 2. Create Flavor (Instance size)
-openstack flavor create --id 1 --ram 2048 --disk 20 --vcpus 2 m1.small
+openstack flavor create --id 1 --ram 2048 --disk 20 --vcpus 2 m1.devops
 
 # 3. Create Networks & Router
 openstack network create  --share --external --provider-physical-network provider --provider-network-type flat provider
@@ -24,4 +24,4 @@ openstack security group rule create --proto icmp sg_groupe_ubu
 openstack security group rule create --proto tcp --dst-port 22 sg_groupe_ubu
 
 # 5. Boot Instance
-openstack server create --flavor m1.small --image "ubuntu-24.04-cloud" --network internal --security-group sg_groupe_ubu 	my-ubuntu-vm
+openstack server create --flavor m1.devops --image "ubuntu-24.04-cloud" --network internal --security-group sg_groupe_ubu 	my-ubuntu-vm
