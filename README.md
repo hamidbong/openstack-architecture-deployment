@@ -92,6 +92,7 @@ $ openstack hypervisor list
 |   1   |   compute1    |     up     |   enabled   |
 |   2   |   compute2    |     up     |   enabled   |
 +-------+---------------+------------+-------------+
+```
 
 ## 🧠 What I Learned & Troubleshooting
 
