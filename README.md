@@ -37,7 +37,7 @@ I deployed a **3-node architecture** to simulate a real-world production environ
 To achieve a true multi-node deployment, I separated the physical network interfaces into distinct logical networks using Linux bridging and Netplan configurations.
 
 ### 1. Physical Infrastructure Networks (Underlay)
-*   **Management Network (`192.168.122.0/24`):** Used for internal node-to-node communication, database synchronization, and AMQP message queues.
+*   **Management Network (`192.168.122.0/24`):** Used for internal node-to-node && node-to-internet communication, database synchronization, and AMQP message queues.
     *   `Controller Node IP:` 192.168.122.96
     *   `Compute Node 01 IP:` 192.168.122.68
     *   `Compute Node 02 IP:` 192.168.122.126
@@ -49,8 +49,9 @@ The Netplan configuration files for all 3 nodes can be reviewed in the [OS-infra
 Once the underlying cluster network was stable, I provisioned the logical cloud infrastructure via the OpenStack CLI:
 
 *   **External Provider Network:** A flat/VLAN network map linked to the physical interface for internet egress.
-*   **Self-Service Private Network:** An isolated tenant network (`192.168.60.0/24`) using VXLAN encapsulation for tenant isolation.
-*   **Virtual Router:** Connects the Self-Service network to the Provider network, with SNAT enabled for internet access.
+*   **Internal Private Network:** An isolated tenant network (`192.168.60.0/24`) using VXLAN encapsulation for tenant isolation.
+*   **Virtual Router:** Connects the internal network to the Provider network, with SNAT enabled for internet access.
+*   **Floating IP:** Allocated from the external Provider Network (`192.168.200.0/24`) to enable instances on the private internal network to access to the internet and to be accessible from external networks.
 *   **Security Groups:** Configured strict firewall rules to secure instances:
     *   `Ingress:` Allowed SSH (Port 22) and ICMP (Ping) only from specific administration subnets.
     *   `Egress:` Allowed all traffic for system updates.
