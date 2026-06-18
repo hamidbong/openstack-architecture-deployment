@@ -1,0 +1,17 @@
+# added for all cluster nodes
+
+
+127.0.0.1 localhost
+
+# controller
+192.168.122.96 controller
+
+# compute1
+192.168.122.68 compute1
+
+# compute2
+192.168.122.126 compute2
+
+# storage
+192.168.122.167 storage
+
