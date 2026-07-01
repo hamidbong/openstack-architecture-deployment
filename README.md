@@ -189,8 +189,11 @@ Installing OpenStack "the hard way" is challenging. Here are the main problems I
 ---
 ## 🧩 Quelques images
 
-### 🌐 Schéma Réseau de l’Infrastructure reseau
+### 🌐 Schéma de l’Infrastructure reseau OpenStack
 ![Schéma Réseau OpenStack](images/networklayout.png)
+
+### 📊 Dashboard of the OpenStack (by Horizon)
+![OpenStack Dashboad Schema](images/architecture openstack.webp)
 
 
 ## 🚀 Next Steps
