@@ -187,6 +187,11 @@ Installing OpenStack "the hard way" is challenging. Here are the main problems I
 * **Solution:** I learned to inspect log files directly (like `/var/log/nova/nova-compute.log` and `/var/log/neutron/neutron-server.log`) to find and fix the root cause.
 
 ---
+## 🧩 Quelques images
+
+### 🌐 Schéma Réseau de l’Infrastructure reseau
+![Schéma Réseau OpenStack](images/networklayout.png)
+
 
 ## 🚀 Next Steps
 - [ ] Secure the APIs using TLS/SSL certificates.
