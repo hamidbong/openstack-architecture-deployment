@@ -193,8 +193,7 @@ Installing OpenStack "the hard way" is challenging. Here are the main problems I
 ![Schéma Réseau OpenStack](images/networklayout.png)
 
 ### 📊 Dashboard of the OpenStack (by Horizon)
-![OpenStack Dashboad Schema](images/Openstack_dashboard_overview.png)
-
+![OpenStack Dashboard](images/Openstack_dashboard_overview.png)
 
 ## 🚀 Next Steps
 - [ ] Secure the APIs using TLS/SSL certificates.
